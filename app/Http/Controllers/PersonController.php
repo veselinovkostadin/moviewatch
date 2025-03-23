@@ -12,6 +12,17 @@ class PersonController extends Controller
 {
     use ResponseConverter;
 
+    public function index()
+    {
+        $actors = Http::withToken(config("services.tmdb.token"))
+            ->get(
+                config("services.tmdb.url") . "/person/popular"
+            )->json();
+
+        dd($actors);
+        return view("person.index", compact("actors"));
+    }
+
 
     public function show($personId)
     {

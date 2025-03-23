@@ -12,7 +12,8 @@ class Favorite extends Model
         'poster_path',
         'vote_average',
         'language',
-        'isMovie'
+        'isMovie',
+        "release_date"
     ];
 
     public function favoritedBy()

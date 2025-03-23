@@ -17,7 +17,8 @@ Route::get("/movie/genres", BrowseByGenres::class)->name("genres.browse");
 Route::get("/movie/{movie}", [MovieController::class, "show"])->name("movie.show");
 
 
-Route::get("/person/{personId}", [PersonController::class, "show"])->name("person.show");
+Route::get("/actors", [PersonController::class, "index"])->name("person.index");
+Route::get("/actor/{personId}", [PersonController::class, "show"])->name("person.show");
 
 Route::middleware('auth')->group(function () {
     Route::get("/favorites", [FavoriteController::class, "show"])->name("favorites.show");

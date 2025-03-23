@@ -14,6 +14,35 @@ class FavoriteController extends Controller
     {
         $favorites = Auth::user()->favorites;
 
-        dd($favorites);
+        $movies = collect($favorites)->filter(function ($movie) {
+            return $movie->isMovie;
+        })->map->toArray();
+
+        $movies = $favorites->filter(function ($movie) {
+            return $movie->isMovie;
+        })->map(function ($movie) {
+            $array = $movie->toArray();
+            $array['original_title'] = $array['title'];
+            unset($array['title']);
+
+            return $array;
+        });
+
+
+        $series = collect($favorites)->filter(function ($series) {
+            return !$series->isMovie;
+        })->map(function ($series) {
+            $array = $series->toArray();
+            $array["original_name"] = $array["title"];
+            unset($array["title"]);
+            $array["first_air_date"] = $array["release_date"];
+            $array["original_language"] = $array["language"];
+
+            return $array;
+        });
+
+        // dd($movies, $series, $favorites);
+
+        return view("favorites.show", compact("movies", "series"));
     }
 }

@@ -11,7 +11,7 @@ class DisplayCardsGrid extends Component
     /**
      * Create a new component instance.
      */
-    public function __construct(public $items, public $genres, public $isMovie = true)
+    public function __construct(public $items, public $genres = [], public $isMovie = true)
     {
         //
     }

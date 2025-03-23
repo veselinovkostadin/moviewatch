@@ -24,12 +24,11 @@
             </div>
 
             <div class="flex flex-wrap space-x-1 space-y-1">
-                @php
-                    dd($movie)
-                @endphp
-                @foreach($movie["genre_ids"] as $genre)
-                    <x-genre-tag :genre="$genres[$genre]"/>
-                @endforeach
+                @if(isset($movie["genre_ids"]))
+                    @foreach($movie["genre_ids"] as $genre)
+                        <x-genre-tag :genre="$genres[$genre]"/>
+                    @endforeach
+                @endif
             </div>
         </div>
     </div>

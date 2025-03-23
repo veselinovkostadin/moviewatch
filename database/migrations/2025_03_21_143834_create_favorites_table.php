@@ -18,6 +18,7 @@ return new class extends Migration
             $table->text("poster_path");
             $table->text("vote_average");
             $table->text("language");
+            $table->date("release_date")->nullable();
             $table->boolean("isMovie")->default(1);
             $table->timestamps();
         });

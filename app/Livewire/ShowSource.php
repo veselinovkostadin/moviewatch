@@ -27,7 +27,7 @@ class ShowSource extends Component
             "VidJoy" => config("services.stream.url_vid_joy_series"),
             "VidSrc" => config("services.stream.url_vid_src_series")
         ];
-        $this->streamName = "VidJoy";
+        $this->streamName = "VidSrc";
         $this->currentStreamService = $this->streamServices[$this->streamName] . $this->getStreamingExtenstion($showId, $this->season['season_number'], $this->episode['episode_number']);
     }
 

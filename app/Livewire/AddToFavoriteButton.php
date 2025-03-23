@@ -26,7 +26,6 @@ class AddToFavoriteButton extends Component
             $this->itemApi = Http::withToken(config("services.tmdb.token"))
                 ->get(config("services.tmdb.url") . "/tv/" . $this->id)->json();
         }
-        dd($this->itemApi);
 
         if (isset($this->itemApi["id"])) {
             $this->itemFound = true;
@@ -42,6 +41,8 @@ class AddToFavoriteButton extends Component
         } else {
             $this->text = "Add to favorites";
         }
+
+        dump($this->itemApi);
     }
 
     public function toggleFavorite()
@@ -76,6 +77,7 @@ class AddToFavoriteButton extends Component
                 'poster_path' => $this->itemApi['poster_path'],
                 'vote_average' => $this->itemApi['vote_average'],
                 'language' => $this->itemApi["original_language"],
+                'release_date' => isset($this->itemApi["release_date"]) ? $this->itemApi["release_date"] : $this->itemApi["first_air_date"],
                 'isMovie' => $this->isMovie,
             ]);
 

@@ -28,7 +28,7 @@
             @endisset
 
             <!-- Page Content -->
-            <main class="w-[90%] mx-auto mt-10 min-h-screen">
+            <main class="w-[90%] mx-auto mt-10 min-h-screen pb-10 h-fit">
                     {{ $slot }}
             </main>
         </div>

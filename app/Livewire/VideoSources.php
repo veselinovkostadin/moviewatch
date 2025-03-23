@@ -19,7 +19,7 @@ class VideoSources extends Component
             "VidJoy" => config("services.stream.url_vid_joy"),
             "VidSrc" => config("services.stream.url_vid_src")
         ];
-        $this->currentStreamService = $this->streamServices["VidJoy"];
+        $this->currentStreamService = $this->streamServices["VidSrc"];
     }
 
     public function changeStreamingService(string $name)

@@ -23,17 +23,25 @@
                     <x-nav-link :href="route('tvShows')" :active="request()->routeIs('tvShows')" wire:navigate>
                         {{ __('TV Shows') }}
                     </x-nav-link>
+
+                    <x-nav-link :href="route('person.index')" :active="request()->routeIs('person.index')" wire:navigate>
+                        {{ __('Actors') }}
+                    </x-nav-link>
+
                     @if(!Auth::check())
                         <x-nav-link :href="route('login')" wire:navigate>
                             {{ __('Login') }}
                         </x-nav-link>
+                    @else
+                    <x-nav-link :href="route('favorites.show')" :active="request()->routeIs('tvShows')" wire:navigate>
+                        {{ __('Favorites') }}
+                    </x-nav-link>
                     @endif
 
                 </div>
 
             </div>
 
-            <livewire:search />
             <!-- Settings Dropdown -->
             @if(Auth::check())
             <div class="hidden sm:flex sm:items-center sm:ms-6">
@@ -102,6 +110,10 @@
                         {{ __('TV Shows') }}
                     </x-responsive-nav-link>
 
+                    <x-responsive-nav-link :href="route('person.index')" :active="request()->routeIs('person.index')" wire:navigate>
+                        {{ __('Actors') }}
+                    </x-responsive-nav-link>
+
                     <x-responsive-nav-link :href="route('genres.browse')" :active="request()->routeIs('genres.browse')" wire:navigate>
                         {{ __('Browse movies by genres') }}
                     </x-responsive-nav-link>
@@ -109,6 +121,10 @@
                 @if(Auth::check())
                     <x-responsive-nav-link :href="route('profile.edit')" wire:navigate>
                         {{ __('Profile') }}
+                    </x-responsive-nav-link>
+
+                    <x-responsive-nav-link :href="route('favorites.show')" wire:navigate>
+                        {{ __('Favorites') }}
                     </x-responsive-nav-link>
 
                         <form method="POST" action="{{ route('logout') }}">

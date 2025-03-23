@@ -2,10 +2,10 @@
 
 namespace App\Livewire;
 
-use Illuminate\Support\Facades\Http;
 use Livewire\Component;
+use Illuminate\Support\Facades\Http;
 
-class Search extends Component
+class ActorSearch extends Component
 {
     public $search = "";
     public $results = [];
@@ -14,20 +14,17 @@ class Search extends Component
     {
         if (strlen($this->search) > 2) {
             $this->results = collect(Http::withToken(config('services.tmdb.token'))
-                ->get(config('services.tmdb.url') . "/search/movie?query=" . $this->search)
+                ->get(config('services.tmdb.url') . "/search/person?query=" . $this->search)
                 ->json()["results"])
-                ->filter(function ($movie) {
-                    return !is_null($movie['poster_path']);
-                })
                 ->take(10)
                 ->all();
         }
-        // dump($this->results);
-    }
 
+        dd($this->results);
+    }
 
     public function render()
     {
-        return view('livewire.search');
+        return view('livewire.actor-search');
     }
 }

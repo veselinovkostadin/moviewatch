@@ -27,9 +27,11 @@
             </div>
 
             <div class="flex flex-wrap space-x-1 space-y-1">
-                @foreach($show["genre_ids"] as $genre)
-                    <x-genre-tag :genre="$genres[$genre]"/>
-                @endforeach
+                @if(isset($show["genre_ids"]))
+                    @foreach($show["genre_ids"] as $genre)
+                        <x-genre-tag :genre="$genres[$genre]"/>
+                    @endforeach
+                @endif
             </div>
         </div>
     </div>
